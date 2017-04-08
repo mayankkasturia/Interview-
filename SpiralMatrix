@@ -1,0 +1,47 @@
+public class SpiralMatrix {
+
+    public static void main(String[] args) {
+        int a[][] = {{1, 2, 3, 4, 5},
+        {6, 7, 8, 9, 10},
+        {11, 12, 13, 14, 15},
+        {16, 17, 18, 19, 20},
+        {21, 22, 23, 24, 25},
+        {26, 27, 28, 29, 30}
+        };
+
+        clockwisePrint(a);
+
+    }
+
+    private static void clockwisePrint(int a[][]) {
+        StringBuffer s = new StringBuffer("String : ");
+        int rowStart = 0;
+        int rowLength = a.length - 1;
+        int columnStart = 0;
+        int columnLength = a[0].length - 1;
+        while (rowStart <= rowLength && columnStart <= columnLength) {
+            for (int i = rowStart; i <= columnLength; i++) {
+                s.append(a[rowStart][i] + " ");
+            }
+            for (int i = rowStart + 1; i <= rowLength; i++) {
+                s.append(a[i][columnLength] + " ");
+            }
+            if (rowStart + 1 <= rowLength) {
+                for (int i = columnLength - 1; i >= columnStart; i--) {
+                    s.append(a[rowLength][i] + " ");
+                }
+            }
+            if (columnStart + 1 <= columnLength) {
+                for (int i = rowLength - 1; i > rowStart; i--) {
+                    s.append(a[i][columnStart] + " ");
+                }
+            }
+            rowStart++;
+            columnStart++;
+            rowLength--;
+            columnLength--;
+        }
+        System.out.println(s);
+    }
+
+}
