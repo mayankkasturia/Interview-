@@ -1,3 +1,13 @@
+//Write a function that, given a matrix of integers, builds a string with the entries of that matrix appended in clockwise order. For instance, the 3x4 matrix below:
+//
+//2, 3, 4, 8
+//5, 7, 9, 12
+//1, 0, 6, 10
+//
+//would make the string “2, 3, 4, 8, 12, 10, 6, 0, 1, 5, 7, 9”.
+//
+//a)	Given your solution, how would you verify the correctness?
+
 public class SpiralMatrix {
 
     public static void main(String[] args) {
