@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class integerToOctHexDec {
+
+    public static void main(String[] arg) {
+
+        String result;
+        Scanner intInput = new Scanner(System.in);
+        try{
+        System.out.println("Please Enter the Integer Value : ");
+        int integer = intInput.nextInt();
+        System.out.println("Please Enter the Base Value : ");
+        int base = intInput.nextInt();
+       
+        if (base == 8 || base == 16 || base == 10) {
+            result = itoa(integer, base);
+        } else {
+            result = "Enter the correct value of Base(8 for Octal, 10 for Decimal and 16 for HexaDecimal)";
+        }
+
+        System.out.println(result);
+     }
+        catch(InputMismatchException e){
+        System.out.println("Please Enter Correct Input Integer");
+        }
+    }
+
+    public static String itoa(int integer, int base) {
+        boolean negative =false;
+        if(integer < 0){
+        negative =true;
+        integer= -1*integer;
+        }
+        String arr="";
+        if(base !=10){     
+        while (integer != 0) {
+            int numb = integer % base;
+            if (numb > 9) {
+                String a = hexConverter(numb);
+                arr=a+arr;
+            } else {
+             
+                arr=numb+arr;
+            }
+            integer = integer / base;
+
+        }
+        }
+        else{
+        arr=Integer.toString(integer);
+        }
+        if(negative){
+        arr="-" +arr;
+        }
+        return arr;
+    }
+
+    public static String hexConverter(int r) {
+        String result = "";
+        if (r == 10) {
+            result = "A";
+        }
+        if (r == 11) {
+            result = "B";
+        }
+        if (r == 12) {
+            result = "C";
+        }
+        if (r == 13) {
+            result = "D";
+        }
+        if (r == 14) {
+            result = "E";
+        }
+        if (r == 15) {
+            result = "F";
+        }
+        return result;
+    }
+}
