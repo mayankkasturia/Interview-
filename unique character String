@@ -1,0 +1,30 @@
+//Implement an algo to determine if a string has all unique character
+
+public class UniqueString {
+
+	public static void main(String[] argm) {
+		try {
+			String s = "";
+			String q = s.toLowerCase();
+			boolean[] uniStr = new boolean[256];
+			boolean result = toCheck(q, uniStr);
+			System.out.println("Does this String contain unique character :" + result);
+		} catch (Exception e) {
+			System.out.println("Please enter a valid string");
+		}
+	}
+
+	public static boolean toCheck(String q, boolean[] uniStr) {
+		for (int i = 0; i < q.length(); i++) {
+			int j = q.charAt(i);
+			if (uniStr[j]) {
+				return false;
+			} else {
+				uniStr[j] = true;
+			}
+
+		}
+		return true;
+	}
+
+}
