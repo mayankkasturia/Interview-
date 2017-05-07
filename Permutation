@@ -1,0 +1,37 @@
+//To decide if one string is permutation of the other.
+public class Permutation {
+
+	public static void main(String[] argm) {
+		try {
+			String s = "cat";
+			String q = "tac";
+			int[] uniStr = new int[256];
+			boolean result = toCheck(s, q, uniStr);
+			System.out.println("Are these two String equal :" + result);
+		} catch (Exception e) {
+			System.out.println("Please enter a valid string");
+		}
+	}
+
+	public static boolean toCheck(String s, String q, int[] uniStr) {
+		if (s.length() != q.length()) {
+			return false;
+
+		} else {
+			for (int i = 0; i < s.length(); i++) {
+				int j = s.charAt(i);
+				uniStr[j]++;
+			}
+			for (int k = 0; k < q.length(); k++) {
+				int l = q.charAt(k);
+				uniStr[l]--;
+				if (uniStr[l] == -1) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+}
