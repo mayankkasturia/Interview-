@@ -1,0 +1,55 @@
+// Method to replace space with "%20".
+public class ReplaceSpace {
+	static int trueLength = 13;
+
+	public static void main(String[] argm) {
+		try {
+
+			String name = "Mr John Smith    ";
+			int length = name.length();
+
+			char[] namearr = new char[length];
+			for (int i = 0; i < length; i++) {
+				namearr[i] = name.charAt(i);
+				// System.out.println(namearr[i]);
+
+			}
+			replaceSpace(namearr, trueLength);
+			for (int k = 0; k < namearr.length; k++) {
+
+				System.out.print(namearr[k]);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void replaceSpace(char[] str, int length) {
+		// calculate no of spaces
+		int spaceCount = 0;
+		for (int i = 0; i < length - 1; i++) {
+			if (str[i] == ' ')
+				spaceCount++;
+		}
+
+		// new length of string
+		int newLength = length + 2 * spaceCount;
+
+		// str[newLength] = '\0';
+		// replace spaces
+		for (int j = length - 1; j >= 0; j--) {
+			if (str[j] == ' ') {
+				str[newLength - 1] = '0';
+				str[newLength - 2] = '2';
+				str[newLength - 3] = '%';
+				newLength = newLength - 3;
+			} else {
+				str[newLength - 1] = str[j];
+				newLength--;
+			}
+		}
+	}
+
+}
